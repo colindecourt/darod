@@ -1,0 +1,129 @@
+{
+  "model": {
+    "layout": "2D",
+    "input_size": [
+      256,
+      64,
+      1
+    ],
+    "sequence_len": 1,
+    "stride": [
+      8,
+      2
+    ],
+    "feature_map_shape": [
+      32,
+      32
+    ],
+    "backbone": "DAROD",
+    "dilation_rate": [
+      1,
+      1
+    ]
+  },
+  "training": {
+    "two_step": false,
+    "pretraining": "None",
+    "use_aug": true,
+    "use_doppler": true,
+    "use_reg": false,
+    "scheduler": false,
+    "dropout_rate": 0.0,
+    "use_bn": true,
+    "use_dropout": false,
+    "scheduler_step": 40,
+    "epochs": 75,
+    "batch_size": 16,
+    "optimizer": "adam",
+    "lr": 0.0001,
+    "momentum": 0.0,
+    "eval_every": 1,
+    "num_steps_epoch": 7167
+  },
+  "rpn": {
+    "rpn_channels": 256,
+    "rpn_window": [
+      3,
+      3
+    ],
+    "anchor_ratios": [
+      0.25,
+      0.5,
+      0.125
+    ],
+    "anchor_scales": [
+      0.12,
+      0.07,
+      0.03
+    ],
+    "anchor_count": 5,
+    "positive_th": 0.3,
+    "rpn_nms_iou": 0.7,
+    "rpn_nms_score": 0.05,
+    "rpn_boxes": 64,
+    "adaptive_ratio": false,
+    "variances": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "fastrcnn": {
+    "pre_nms_topn_train": 2000,
+    "post_nms_topn_train": 1000,
+    "pre_nms_topn_test": 1000,
+    "post_nms_topn_test": 500,
+    "box_nms_score": 0.5,
+    "box_nms_iou": 0.1,
+    "positive_th": 0.3,
+    "frcnn_boxes": 64,
+    "adaptive_ratio": false,
+    "frcnn_num_pred": 30,
+    "in_channels_1": 256,
+    "in_channels_2": 256,
+    "pooling_size": [
+      4,
+      4
+    ],
+    "variances_boxes": [
+      0.22341527,
+      0.27681383,
+      0.22823434,
+      0.27708215
+    ],
+    "reg_loss": "sl1"
+  },
+  "data": {
+    "total_labels": 7,
+    "labels": [
+      "pedestrian",
+      "bicyclist",
+      "car",
+      "motorcycle",
+      "bus",
+      "truck"
+    ],
+    "dataset": "raddet",
+    "dataset_version": "1.0.0",
+    "tfds_path": "<path_to_tensorflow_datasets>",
+    "data_mean": 830.4466,
+    "data_std": 93.25871,
+    "doppler_res": 0.41968030701528203,
+    "range_res": 0.1953125,
+    "rpn_weights_pth": null,
+    "frcnn_weights_pth": null,
+    "test_occurence": {
+      "person": 1280,
+      "bicycle": 204,
+      "car": 3664,
+      "motorcycle": 22,
+      "bus": 40,
+      "truck": 793
+    }
+  },
+  "log": {
+    "exp": null,
+    "log_path": null
+  }
+}

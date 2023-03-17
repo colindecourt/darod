@@ -1,0 +1,123 @@
+{
+  "model": {
+    "layout": "2D",
+    "input_size": [
+      256,
+      64,
+      1
+    ],
+    "sequence_len": 1,
+    "stride": [
+      8,
+      2
+    ],
+    "feature_map_shape": [
+      32,
+      32
+    ],
+    "backbone": "DAROD",
+    "dilation_rate": [
+      1,
+      1
+    ]
+  },
+  "training": {
+    "two_step": false,
+    "pretraining": "None",
+    "use_aug": true,
+    "use_doppler": true,
+    "use_reg": false,
+    "scheduler": true,
+    "dropout_rate": 0.5,
+    "use_bn": true,
+    "use_dropout": false,
+    "scheduler_step": 25,
+    "epochs": 50,
+    "batch_size": 4,
+    "optimizer": "adam",
+    "lr": 0.0001,
+    "momentum": 0.0,
+    "eval_every": 1,
+    "num_steps_epoch": 4319
+  },
+  "rpn": {
+    "rpn_channels": 256,
+    "rpn_window": [
+      3,
+      3
+    ],
+    "anchor_ratios": [
+      0.25,
+      0.5,
+      0.125
+    ],
+    "anchor_scales": [
+      0.12,
+      0.07,
+      0.03
+    ],
+    "anchor_count": 5,
+    "positive_th": 0.3,
+    "rpn_nms_iou": 0.7,
+    "rpn_nms_score": 0.05,
+    "rpn_boxes": 16,
+    "adaptive_ratio": false,
+    "variances": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "fastrcnn": {
+    "pre_nms_topn_train": 2000,
+    "post_nms_topn_train": 2000,
+    "pre_nms_topn_test": 1000,
+    "post_nms_topn_test": 1000,
+    "box_nms_score": 0.5,
+    "box_nms_iou": 0.1,
+    "positive_th": 0.3,
+    "frcnn_boxes": 16,
+    "adaptive_ratio": false,
+    "frcnn_num_pred": 30,
+    "in_channels_1": 256,
+    "in_channels_2": 256,
+    "pooling_size": [
+      4,
+      4
+    ],
+    "variances_boxes": [
+      0.2560631,
+      0.1567874,
+      0.25217897,
+      0.1503962
+    ],
+    "reg_loss": "sl1"
+  },
+  "data": {
+    "total_labels": 4,
+    "dataset": "carrada",
+    "labels": [
+      "pedestrian",
+      "bicyclist",
+      "car"
+    ],
+    "test_occurence": {
+      "pedestrian": 955,
+      "bicyclist": 159,
+      "car": 514
+    },
+    "dataset_version": "1.0.0",
+    "tfds_path": "<path_to_tensorflow_datasets>",
+    "data_mean": 58.47112418237332,
+    "data_std": 3.748725977590863,
+    "data_min": 37.59535773996415,
+    "data_max": 119.08313902425246,
+    "doppler_res": 0.41968030701528203,
+    "range_res": 0.1953125
+  },
+  "log": {
+    "exp": null,
+    "log_path": null
+  }
+}
